@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+	
+	<String Id="ProductName_x86">IAMHeimdall (32bit)</String>
+	<String Id="ProductName_x64">IAMHeimdall (64bit)</String>
+	<String Id="ProductNameFolder">IAMHeimdallApp</String>
+	<String Id="RootDirectory">C:\</String>
+	<String Id="Language">1033</String>
+	<String Id="Company">Company Health</String>
+	<String Id="Description">IAM Heimdall Multitool</String>
+	<String Id="Keywords">dotnet,core,application,installer</String>
+	<String Id="Comments">Access Management Tool</String>
+	<String Id="DowngradeErrorMessage">A newer version of IAM Heimdall is already installed.</String>
+	
+</WixLocalization>

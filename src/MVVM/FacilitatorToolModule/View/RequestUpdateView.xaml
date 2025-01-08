@@ -1,0 +1,573 @@
+﻿<UserControl x:Class="IAMHeimdall.MVVM.View.RequestUpdateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:d1="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:IAMHeimdall.MVVM.ViewModel"
+             FontFamily="/IAMHeimdall;component/Resources/Fonts/#Lato"
+             mc:Ignorable="d1 d"
+             d:DesignHeight="800" d:DesignWidth="1000"
+             Background="{StaticResource TricornBlack}">
+    <UserControl.DataContext>
+        <viewModel:RequestUpdateViewModel>
+        </viewModel:RequestUpdateViewModel>
+    </UserControl.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:CallMethodAction TargetObject="{Binding}" MethodName="LoadData" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border
+            Margin="0"
+            BorderBrush="{StaticResource TricornBlack}"
+            BorderThickness="1">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Offset="0.0" Color="{StaticResource ResourceKey=JuteBrownColorDarker}" />
+                <GradientStop Offset="0.5" Color="{StaticResource ResourceKey=JuteBrownLighterColor}" />
+                <GradientStop Offset="1.0" Color="{StaticResource ResourceKey=JuteBrownColor}" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*" />
+                <RowDefinition Height="9.2*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Border Background="{StaticResource DeepOnyx}">
+                    <Label Content="Request Update"
+                   Width="Auto"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Style="{StaticResource HeaderLabelStyle}"
+                   Foreground="{StaticResource StoneWhite}"
+                   FontWeight="Bold" />
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Column="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="6*" />
+                                <RowDefinition Height="1.5*" />
+                                <RowDefinition Height="2.5*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="5*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Column="0">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*" />
+                                            <RowDefinition Height="9*" />
+                                        </Grid.RowDefinitions>
+                                        <Label  Content="Agents Working"
+                                    Grid.Row="0"
+                                    Padding="0"
+                                    Style="{StaticResource LabelStyle}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    Margin="0,0,0,5"
+                                    FontWeight="Bold" />
+
+                                        <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="5"
+                                    Grid.Row="1"
+                                    Margin="2">
+                                            <TextBox Text="{Binding AgentsWorkingString}"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    TextWrapping="Wrap"
+                                    IsReadOnly="True"
+                                    Style="{StaticResource TextBoxStyle}" Margin="0,0,0,-1" />
+                                        </Border>
+                                    </Grid>
+                                </Border>
+
+                                <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Column="1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*" />
+                                            <RowDefinition Height="9*" />
+                                        </Grid.RowDefinitions>
+                                        <Label  Content="Systems Attached"
+                                    Grid.Row="0"
+                                    Padding="0"
+                                    Style="{StaticResource LabelStyle}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    Margin="0,0,0,5"
+                                    FontWeight="Bold" />
+
+                                        <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="5"
+                                    Grid.Row="1"
+                                    Margin="2">
+                                            <TextBox Text="{Binding Systems}"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    TextWrapping="Wrap"
+                                    IsReadOnly="True"
+                                    Style="{StaticResource TextBoxStyle}" Margin="0,0,0,-1" />
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Row="1">
+                                <StackPanel
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                                    <Label  Content="XREF"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    Style="{StaticResource LabelStyle}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    Margin="0,0,0,5"
+                                    FontWeight="Bold" />
+                                    <Border CornerRadius="5"
+                                    Background="{StaticResource TricornBlack}"
+                                    Width="250"
+                                    Height="Auto">
+                                        <TextBox   x:Name="XRefTextBox"
+                                    Grid.Column="1"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Height="Auto"
+                                    Width="Auto"
+                                    Margin="3"
+                                    IsReadOnly="True"
+                                    Style="{StaticResource UpdateBox}"
+                                    Text="{Binding Xref1String,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+
+                            <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Row="2">
+
+                                <StackPanel
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                                    <Label  Content="Facilitator Comments"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    Style="{StaticResource LabelStyle}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    Margin="0,0,0,5"
+                                    FontWeight="Bold" />
+                                    <Border CornerRadius="5"
+                                    Background="{StaticResource TricornBlack}"
+                                    Width="250"
+                                    Height="Auto">
+                                        <TextBox   x:Name="FacilitatorCommentsBox"
+                                    Grid.Column="1"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Height="Auto"
+                                    Width="Auto"
+                                    Margin="3"
+                                    IsReadOnly="True"
+                                    Style="{StaticResource UpdateBox}"
+                                    Text="{Binding FacilitatorComments,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                    </Border>
+                                </StackPanel>
+
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Column="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="3*" />
+                                <RowDefinition Height="2*" />
+                            </Grid.RowDefinitions>
+
+                            <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Row="0">
+                                <StackPanel
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                                    <Label  Content="Reference Number "
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    Style="{StaticResource LabelStyle}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    Margin="0,0,0,5"
+                                    FontWeight="Bold" />
+
+                                    <Border CornerRadius="5"
+                                    Background="{StaticResource TricornBlack}"
+                                    Width="300"
+                                    Height="Auto">
+                                        <TextBox   x:Name="ReferenceTextBox"
+                                    Grid.Column="1"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Height="Auto"
+                                    Width="Auto"
+                                    Margin="3"
+                                    Style="{StaticResource UpdateBox}"
+                                    Text="{Binding ReferenceTextBoxString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                    </Border>
+                                    <Button x:Name="getRequestButton"
+                                    Grid.Column="3"
+                                    Content="Get Request"
+                                    Style="{StaticResource ButtonStyle}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Margin="0,5,0,5"
+                                    FontWeight="Bold"
+                                    Grid.Row="0"
+                                    Command="{Binding GetRequestCommand}" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Row="1">
+                                <StackPanel  Grid.Row="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,0,2">
+                                    <Label    x:Name="RequestStateLabel"
+                                    Content="Request State"
+                                    Width="Auto"
+                                    Height="28"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource LabelStyle}"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    FontWeight="Bold" />
+                                    <Border CornerRadius="5"
+                                    Background="{StaticResource TricornBlack}"
+                                    Width="300"
+                                    Height="26"
+                                    Margin="10,0,10,4">
+                                        <ComboBox x:Name="RequestStateBox"
+                                    Style="{StaticResource ComboBoxTheme}"
+                                    Margin="3"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Stretch"
+                                    Width="Auto"
+                                    SelectedIndex="0"
+                                    ItemsSource="{Binding StateTypes}"
+                                    DisplayMemberPath="BoxItem"
+                                    SelectedItem="{Binding SelectedState}" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+
+                            <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Row="2">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="7*" />
+                                        <RowDefinition Height="3*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*" />
+                                            <ColumnDefinition Width="5*" />
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox Content="Send Back &#10;for Approval"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Grid.Column="0"
+                                   IsChecked="{Binding Path=SendBackChecked,Mode=TwoWay}" />
+
+                                        <CheckBox Content="Received back &#10;for Completion"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Grid.Column="1"
+                                   IsEnabled="false"
+                                   IsChecked="{Binding Path=ReceivedBackChecked,Mode=TwoWay}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="1">
+                                        <Label  x:Name="SentBackTimesLabel"
+                                    Grid.Row="1"
+                                    Height="Auto"
+                                    Style="{StaticResource LabelStyle}"
+                                    FontWeight="Bold"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    DockPanel.Dock="Bottom"
+                                    Margin="0,0,0,0">
+                                            <TextBlock>
+                                <Run Text="Sent Back : " />
+                                <Run Text="{Binding SentBackString}" Foreground="{StaticResource NeonBlue}" />
+                                <Run Text="Times " />
+                                            </TextBlock>
+                                        </Label>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Row="3">
+
+                                <StackPanel>
+                                    <Label    x:Name="StatusLabel"
+                                    Content="{Binding StatusString}"
+                                    Width="Auto"
+                                    Height="28"
+                                    Margin="0,5,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource LabelStyle}"
+                                    Foreground="{StaticResource NeonBlue}"
+                                    FontWeight="Bold" />
+
+                                    <Button x:Name="UpdateRequest"
+                                    Content="Update Request"
+                                    Style="{StaticResource ButtonStyle}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Margin="0,5,0,5"
+                                    FontWeight="Bold"
+                                    IsEnabled="{Binding UpdateEnabled}"
+                                    Command="{Binding UpdateRequestCommand}" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Border         BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Column="2">
+                        <Grid>
+
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*" />
+                                <RowDefinition Height="5*" />
+                            </Grid.RowDefinitions>
+
+                            <Border  BorderBrush="{StaticResource FossilGrey}"
+                              BorderThickness="1"
+                              Grid.Row="0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2.5*" />
+                                        <RowDefinition Height="2.5*" />
+                                        <RowDefinition Height="2.5*" />
+                                        <RowDefinition Height="2.5*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label  x:Name="CreatedDateLabel"
+                                    Grid.Row="0"
+                                    Height="Auto"
+                                    Style="{StaticResource LabelStyle}"
+                                    FontWeight="Bold"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    DockPanel.Dock="Bottom"
+                                    Margin="20,0,0,0">
+                                        <TextBlock>
+                                    <Run Text="Created: &#10;&#10;" />
+                                    <Run Text="{Binding DateCreatedString}" Foreground="{StaticResource NeonBlue}" />
+                                        </TextBlock>
+                                    </Label>
+
+                                    <Label  x:Name="SLAStartLabel"
+                                    Grid.Row="1"
+                                    Height="Auto"
+                                    Style="{StaticResource LabelStyle}"
+                                    FontWeight="Bold"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    DockPanel.Dock="Bottom"
+                                    Margin="20,0,0,0">
+                                        <TextBlock>
+                                    <Run Text="SLA Start Time: &#10;&#10;" />
+                                    <Run Text="{Binding SLAStartString}" Foreground="{StaticResource NeonBlue}" />
+                                        </TextBlock>
+                                    </Label>
+
+                                    <Label x:Name="CompletedDateLabel"
+                                    Grid.Row="2"
+                                    Height="Auto"
+                                    Style="{StaticResource LabelStyle}"
+                                    FontWeight="Bold"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    DockPanel.Dock="Bottom"
+                                    Margin="20,0,0,0">
+                                        <TextBlock>
+                                    <Run Text="Completed: &#10;&#10;" />
+                                    <Run Text="{Binding CompletedDateString}" Foreground="{StaticResource NeonBlue}" />
+                                        </TextBlock>
+                                    </Label>
+
+                                    <Label  x:Name="CompletionLabel"
+                                    Grid.Row="3"
+                                    Height="Auto"
+                                    Style="{StaticResource LabelStyle}"
+                                    FontWeight="Bold"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    DockPanel.Dock="Bottom"
+                                    Margin="20,0,0,0">
+                                        <TextBlock>
+                                    <Run Text="Completion Time: &#10;&#10;" />
+                                    <Run Text="{Binding CompletionTimeString}" Foreground="{StaticResource NeonBlue}" />
+                                        </TextBlock>
+                                    </Label>
+
+                                </Grid>
+                            </Border>
+
+
+
+                            <Border  BorderBrush="{StaticResource FossilGrey}"
+                               BorderThickness="1" Height="219" Grid.RowSpan="2" VerticalAlignment="Bottom">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2.5*" />
+                                        <RowDefinition Height="2.5*" />
+                                        <RowDefinition Height="2.5*" />
+                                        <RowDefinition Height="2.5*" />
+                                    </Grid.RowDefinitions>
+
+                                </Grid>
+                            </Border>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Column="0">
+                        <DockPanel Grid.Column="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Margin="25">
+                            <Label x:Name="addCommentsLabel"
+                                    Content="Add Comments"
+                                    Height="28"
+                                    DockPanel.Dock="Top"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource LabelStyle}"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    FontWeight="Bold" />
+                            <Border CornerRadius="15"
+                                    Background="{StaticResource TricornBlack}"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Height="Auto"
+                                    Width="Auto">
+                                <TextBox x:Name="addCommentsBox"
+                                    AcceptsReturn="True"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Height="Auto"
+                                    Width="Auto"
+                                    Margin="10"
+                                    Style="{StaticResource MultiLineBox}"
+                                    Text="{Binding AddCommentsString ,UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+                        </DockPanel>
+                    </Border>
+
+                    <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1"
+                                    Grid.Column="1">
+                        <DockPanel Grid.Column="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Margin="25">
+                            <Label x:Name="commentsLabel"
+                                    Content="Comments History"
+                                    Height="28"
+                                    DockPanel.Dock="Top"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource LabelStyle}"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    FontWeight="Bold" />
+                            <Border CornerRadius="15"
+                                    Background="{StaticResource TricornBlack}"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Height="Auto"
+                                    Width="Auto">
+                                <TextBox x:Name="commentsBox"
+                                    AcceptsReturn="True"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Height="Auto"
+                                    Width="Auto"
+                                    Margin="10"
+                                    IsReadOnly="True"
+                                    Style="{StaticResource MultiLineBox}"
+                                    Text="{Binding CommentsString ,UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+
+                        </DockPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

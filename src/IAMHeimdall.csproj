@@ -1,0 +1,263 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>x86</Platforms>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <StartupObject>IAMHeimdall.Program</StartupObject>
+    <ApplicationIcon>Resources\bifrost.ico</ApplicationIcon>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <PackageId>IAMHeimdall</PackageId>
+    <Authors>Christopher Olson</Authors>
+    <Company>Company Health</Company>
+    <Product>IAMHeimdall</Product>
+    <Description>IAM Heimdall Multitool</Description>
+    <Copyright>Copyright ©  2021</Copyright>
+    <AssemblyVersion>3.5.6.0</AssemblyVersion>
+    <FileVersion>3.5.6.0</FileVersion>
+	
+	<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+	<TargetZone>LocalIntranet</TargetZone>
+
+	  <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+	  <GenerateDependencyFile>true</GenerateDependencyFile>
+	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	  <PreserveCompilationContext>true</PreserveCompilationContext>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <OutputPath>..\bin\Debug\</OutputPath>
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <OutputPath>..\bin\Release</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>9</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>00020813-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="NucleusNativeMessagingLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>f904f88c-e60d-4327-9fa2-865ad075b400</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+	<PropertyGroup>
+		<NoWarn>$(NoWarn);NU1701</NoWarn>
+		<Version>3.5.6.0</Version>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>C:\Source\repos\heimdalldesktop\HeimdallSigning.pfx</AssemblyOriginatorKeyFile>
+		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.97.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />
+    <PackageReference Include="Microsoft.SharePoint.Client" Version="14.0.4762.1000" />
+    <PackageReference Include="Microsoft.SharePoint.Client.dll" Version="15.0.4420.1017" />
+    <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.23109.12000" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1418.22" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+    <PackageReference Include="Nager.Date" Version="1.37.0" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="NuGet.CommandLine" Version="6.3.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="PnP.Framework" Version="1.11.0" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
+    <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+    <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.0.0" />
+    <PackageReference Include="SharePointPnPCoreOnline" Version="3.28.2012" />
+    <PackageReference Include="SimpleImpersonation" Version="4.2.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="7.0.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="7.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Centrify.Cfw.Core">
+      <HintPath>..\packages\Centrify.Cfw.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="centrifydc.api">
+      <HintPath>..\packages\centrifydc.api.dll</HintPath>
+    </Reference>
+    <Reference Include="interface">
+      <HintPath>..\packages\interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client">
+      <HintPath>..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Runtime">
+      <HintPath>..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="nismap.api">
+      <HintPath>..\packages\nismap.api.dll</HintPath>
+    </Reference>
+    <Reference Include="util">
+      <HintPath>..\packages\Util.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="MVVM\View\LoggingView - Copy.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="bifrost.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+		<Resource Include="Resources\Fonts\Lato.ttf" />
+		<Resource Include="Resources\Fonts\Montserrate.ttf" />
+		<Resource Include="Resources\Fonts\OpenSans.ttf" />
+		<Resource Include="Resources\Fonts\Oswald.ttf" />
+		<Resource Include="Resources\Fonts\Roboto.ttf" />
+		<Resource Include="Resources\Fonts\NBold.otf" />
+		<Resource Include="Resources\Fonts\Norse.otf" />
+		<Resource Include="Resources\Fonts\RunyTunes.ttf" />
+		<Resource Include="Resources\Fonts\Viking.ttf" />
+		<Resource Include="Resources\bifrost.ico" />
+		<Resource Include="Resources\Images\Clipboard.png" />
+		<Resource Include="Resources\Images\CSVExport.png" />
+		<Resource Include="Resources\Images\LeftArrow.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Images\LeftArrow.png~">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Images\RightArrow.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Images\SearchResults.png" />
+		<Resource Include="Resources\Images\Cancel_16x.png" />
+		<Resource Include="Resources\Images\ExportToExcel_16x.png" />
+		<Resource Include="Resources\Images\HtmlExport.png" />
+		<Resource Include="Resources\bifrost.png" />
+		<Resource Include="Resources\Images\ChromeClose_16x.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Images\bifrost.ico">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Images\ChromeMaximize_16x.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Images\Minimize_16x.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Images\bifrost.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Images\ClearResults.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Images\Settings.png" />
+		<Resource Include="Resources\Images\Trash.png" />
+		<None Update="Properties\Settings.settings">
+		  <Generator>SettingsSingleFileGenerator</Generator>
+		  <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <None Remove="Resources\Images\Clipboard.png" />
+	  <None Remove="Resources\Images\CSVExport.png" />
+	  <None Remove="Resources\Images\LeftArrow.png" />
+	  <None Remove="Resources\Images\LeftArrow.png~" />
+	  <None Remove="Resources\Images\RightArrow.png" />
+	  <None Remove="Resources\Images\Settings.png" />
+	  <None Remove="Resources\Images\Trash.png" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Content Include="appsettings.json" />
+		<None Include="..\.editorconfig" Link=".editorconfig" />
+		<Content Update="appsettings.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Folder Include="MVVM\FeedbackModule\Model\" />
+	  <Folder Include="MVVM\GroupsModule\Model\" />
+	  <Folder Include="MVVM\ManualCompletionModule\Model\" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Page Update="MVVM\View\LoggingView - Copy.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
+	</ItemGroup>
+
+	
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="SETLOCAL EnableDelayedExpansion&#xD;&#xA;      &#xD;&#xA;       IF $(ConfigurationName) == Debug (&#xD;&#xA;        &quot;C:\Source\repos\IAMHeimdall\SignTool.exe&quot; sign /f C:\Source\repos\IAMHeimdall\HeimdallSigning.pfx /fd SHA256 C:\Source\repos\IAMHeimdall\bin\debug\IAMHeimdall.exe&#xD;&#xA;        )&#xD;&#xA;&#xD;&#xA;        IF $(ConfigurationName) == Release (&#xD;&#xA;        &quot;C:\Source\repos\IAMHeimdall\SignTool.exe&quot; sign /f C:\Source\repos\IAMHeimdall\HeimdallSigning.pfx /fd SHA256 C:\Source\repos\IAMHeimdall\bin\release\IAMHeimdall.exe&#xD;&#xA;        )&#xD;&#xA;&#xD;&#xA;        if %2525ERRORLEVEL%2525 GEQ 8 goto failed&#xD;&#xA;        GOTO success&#xD;&#xA;&#xD;&#xA;        :failed&#xD;&#xA;        exit 1&#xD;&#xA;&#xD;&#xA;        :success&#xD;&#xA;        exit 0" />
+	</Target>
+  
+</Project>

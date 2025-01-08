@@ -1,0 +1,474 @@
+﻿<UserControl x:Class="IAMHeimdall.MVVM.View.KerberosUsersUpdateRecordView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             FontFamily="/IAMHeimdall;component/Resources/Fonts/#Lato"
+             Background="Transparent"
+             d:DesignHeight="600" d:DesignWidth="300">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:CallMethodAction TargetObject="{Binding}" MethodName="LoadData" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Offset="0.0" Color="{StaticResource ResourceKey=JuteBrownColorDarker}" />
+                <GradientStop Offset="0.5" Color="{StaticResource ResourceKey=JuteBrownLighterColor}" />
+                <GradientStop Offset="1.0" Color="{StaticResource ResourceKey=JuteBrownColor}" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid x:Name="mainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Label     Content="User Update"
+                           Grid.Column="0"
+                           Style="{StaticResource HugeLabelStyle}"
+                           HorizontalContentAlignment="Center"
+                           Foreground="{StaticResource StoneWhite}"
+                           FontWeight="Bold" />
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Label         x:Name="UidLabel"
+                               Grid.Column="1"
+                               Height="30"
+                               Style="{StaticResource LabelStyle}"
+                               FontWeight="ExtraBold"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="{StaticResource NeonBlue}"
+                               DockPanel.Dock="Bottom"
+                               Margin="0,0,0,0">
+                    <TextBlock>
+                        <Run Text="Updating UID : " />
+                        <Run Text="{Binding UserModelInstance.UIDRef}" Foreground="{StaticResource NeonPink}" />
+                    </TextBlock>
+                </Label>
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  x:Name="entryGrid"
+                  Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="3.0*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="0"
+                                x:Name="LOGIDPanel"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Label x:Name="LogIDLabel"
+                               Content="LOG ID"
+                               Width="143"
+                               Height="20"
+                               Padding="0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                        <Border CornerRadius="15"
+                                Background="{StaticResource TricornBlack}"
+                                Width="135"
+                                Height="25">
+                            <TextBox x:Name="LogIDBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Style="{StaticResource UpdateBox}"
+                                     VerticalAlignment="Center"
+                                     Width="135"
+                                     Height="25"
+                                     Text="{Binding UserModelInstance.LogIDRef,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="1"
+                                x:Name="EMPIDPanel"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Label x:Name="EMPIDLabel"
+                               Content="EMP ID"
+                               Width="143"
+                               Height="20"
+                               Padding="0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                        <Border CornerRadius="15"
+                                Background="{StaticResource TricornBlack}"
+                                Width="135"
+                                Height="25">
+                            <TextBox x:Name="EMPIDBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Style="{StaticResource UpdateBox}"
+                                     VerticalAlignment="Center"
+                                     Width="135"
+                                     Height="25"
+                                     Text="{Binding UserModelInstance.EmpIDRef,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        </Border>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="0"
+                                x:Name="ADIDPanel"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Label x:Name="ADIDLabel"
+                               Content="AD ID"
+                               Width="143"
+                               Height="20"
+                               Padding="0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                        <Border CornerRadius="15"
+                                Background="{StaticResource TricornBlack}"
+                                Width="135"
+                                Height="25">
+                            <TextBox x:Name="ADIDBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Style="{StaticResource UpdateBox}"
+                                     VerticalAlignment="Center"
+                                     Width="135"
+                                     Height="25"
+                                     Text="{Binding UserModelInstance.ADIDRef,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        </Border>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="0"
+                                x:Name="FirstPanel"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Label x:Name="FirstLabel"
+                               Content="First Name"
+                               Width="143"
+                               Height="20"
+                               Padding="0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                        <Border CornerRadius="15"
+                                Background="{StaticResource TricornBlack}"
+                                Width="135"
+                                Height="25">
+                            <TextBox x:Name="FirstBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Style="{StaticResource UpdateBox}"
+                                     VerticalAlignment="Center"
+                                     Width="135"
+                                     Height="25"
+                                     Text="{Binding UserModelInstance.FirstName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="1"
+                                x:Name="LastPanel"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Label x:Name="LastLabel"
+                               Content="Last Name"
+                               Width="143"
+                               Height="20"
+                               Padding="0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                        <Border CornerRadius="15"
+                                Background="{StaticResource TricornBlack}"
+                                Width="135"
+                                Height="25">
+                            <TextBox x:Name="LastBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Style="{StaticResource UpdateBox}"
+                                     VerticalAlignment="Center"
+                                     Width="135"
+                                     Height="25"
+                                     Text="{Binding UserModelInstance.LastName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        </Border>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4.5*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="4.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="8*" />
+                        </Grid.RowDefinitions>
+                        <Label x:Name="ServerListLabel"
+                               Grid.Row="0"
+                               Content="Assigned Servers"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                        <ListView x:Name="AssignedListView"
+                                  Grid.Row="1"
+                                  Style="{StaticResource ListBoxStyle}"
+                                  DisplayMemberPath="ServerTerm"
+                                  SelectedIndex="0"
+                                  Margin="2,2,2,2"
+                                  SelectedItem="{Binding SelectedAssignedTerm}"
+                                  ItemsSource="{Binding AssignedServerTerms}">
+                        </ListView>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="4*" />
+                            <RowDefinition Height="4*" />
+                        </Grid.RowDefinitions>
+                        <Button x:Name="AddArrow"
+                                Grid.Row="1"
+                                Style="{StaticResource TitleButtonTheme}"
+                                Foreground="Transparent"
+                                Height="25"
+                                Width="25"
+                                Command="{Binding AddListCommand}">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Resources/Images/LeftArrow.png" />
+                            </Button.Background>
+                        </Button>
+                        <Button x:Name="RemoveArrow"
+                                Grid.Row="2"
+                                 Style="{StaticResource TitleButtonTheme}"
+                                Foreground="Transparent"
+                                Height="25"
+                                Width="25"
+                                Command="{Binding RemoveListCommand}">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Resources/Images/RightArrow.png" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="8*" />
+                        </Grid.RowDefinitions>
+                        <Label x:Name="AvailableServerListLabel"
+                               Grid.Row="0"
+                               Content="Available Servers"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                        <ListView  x:Name="AvailableListView"
+                                  Grid.Row="1"
+                                  Style="{StaticResource ListBoxStyle}"
+                                  DisplayMemberPath="ServerTerm"
+                                  SelectedIndex="0"
+                                  Margin="2,2,2,2"
+                                  SelectedItem="{Binding SelectedAvailableTerm}"
+                                  ItemsSource="{Binding AvailableServerTerms}">
+                        </ListView>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="4">
+                    <StackPanel Grid.Column="0"
+                                x:Name="ticketsPanel"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Label x:Name="ticketsLabel" Content="Comments"
+                            Height="20"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource LabelStyle}"
+                            Padding="0"
+                            Foreground="{StaticResource StoneWhite}"
+                            FontWeight="Bold" />
+                        <Border CornerRadius="15"
+                                Background="{StaticResource TricornBlack}"
+                                Width="280"
+                                Height="70">
+                            <TextBox x:Name="ticketsBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     AcceptsReturn="True"
+                                     Width="280"
+                                     Height="70"
+                                     Style="{StaticResource MultiLineBox}"
+                                     VerticalAlignment="Center"
+                                     Text="{Binding UserModelInstance.CommentsRef,UpdateSourceTrigger=PropertyChanged}"
+                                     GotFocus="TicketsBox_GotFocus"
+                                     MouseLeftButtonDown="TicketsBox_MouseLeftButtonDown" />
+                        </Border>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="5">
+                    <StackPanel Grid.Column="1"
+                                x:Name="historyPanel"
+                                HorizontalAlignment="Center"
+                                 VerticalAlignment="Center">
+                        <Label x:Name="historyLabel" Content="History"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Height="20"
+                            Style="{StaticResource LabelStyle}"
+                            Padding="0"
+                            Foreground="{StaticResource StoneWhite}"
+                            FontWeight="Bold" />
+                        <Border CornerRadius="15"
+                            Background="{StaticResource TricornBlack}"
+                                Width="280"
+                                Height="70">
+                            <TextBox x:Name="historyBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Width="280"
+                                     Height="70"
+                                     Style="{StaticResource MultiLineBox}"
+                                     VerticalAlignment="Center"
+                                     MouseDoubleClick="HistoryBox_MouseDoubleClick"
+                                     IsReadOnly="True"
+                                     Text="{Binding UserModelInstance.HistoryRef,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        </Border>
+                        <Popup Name ="historyPopup"
+                               IsOpen="False"
+                               StaysOpen="False"
+                               Placement="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center">
+                            <Border BorderThickness="1"
+                                    BorderBrush="{StaticResource StoneWhite}">
+                                <Grid x:Name="popupGrid"
+                                      Background="{StaticResource FossilGrey}"
+                                      SnapsToDevicePixels="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="24" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Button x:Name="popupCloseButton"
+                                            BorderThickness="0"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
+                                            Width="24"
+                                            RenderTransformOrigin="-0.736,-1.222"
+                                            Style="{StaticResource TitleButtonTheme}"
+                                            Margin="0"
+                                            HorizontalAlignment="Right"
+                                            Height="24"
+                                            VerticalAlignment="Top" Click="PopupCloseButton_Click">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/ChromeClose_16x.png" />
+                                        </Button.Background>
+                                    </Button>
+                                    <TextBox x:Name="popupText"
+                                             Grid.Row="1"
+                                             MinHeight="300"
+                                             MinWidth="300"
+                                             Background="{StaticResource TricornBlack}"
+                                             Foreground="{StaticResource StoneWhite}"
+                                             BorderThickness="0"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             VerticalScrollBarVisibility="Hidden"
+                                             Padding="0"
+                                             TextWrapping="Wrap"
+                                             Text="{Binding UserModelInstance.HistoryRef}"
+                                             AcceptsReturn="True"
+                                             IsReadOnly="True" />
+                                </Grid>
+                            </Border>
+                        </Popup>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="DoubleClickLabel" Content="Double-Click to expand History"
+                            Height="33"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Style="{StaticResource LabelStyle}"
+                            Foreground="{StaticResource StoneWhite}"
+                            FontWeight="Bold" />
+                <Button x:Name="deleteRecord"
+                                Content="Delete Record"
+                                Style="{StaticResource ButtonStyle}"
+                                HorizontalAlignment="Center"
+                                IsEnabled="{Binding UnixPermissionCheck}"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,5"
+                                FontWeight="Bold"
+                                Grid.Column="1"
+                                Command="{Binding DeleteRecordCommand}"
+                                Width="130" />
+                <Button x:Name="updateTable"
+                                Content="Update Record"
+                                Style="{StaticResource ButtonStyle}"
+                                IsEnabled="{Binding UnixPermissionCheck}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                        Margin="0,0,0,5"
+                                FontWeight="Bold"
+                                Grid.Column="0"
+                                Command="{Binding UpdateRecordCommand}"
+                                Width="130" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	
+	<Fragment>
+		
+		<!-- Product Components-->
+		<ComponentGroup Id="ProductComponents">
+
+			<!-- Shotcut -->
+			<ComponentRef Id="MainAppShortcut"  /> 
+			<ComponentRef Id="MainAppShortcutDesktop"  /> 
+			
+		</ComponentGroup>
+
+		<!-- Install Files-->
+		<DirectoryRef Id="APPLICATIONFOLDER" FileSource="..\bin\publish\">
+
+			<!-- Start Menu Shortcut Creation-->
+			<Component Id="MainAppShortcut" Guid="{23C2070C-F998-40AB-85DD-E4B5CA5A091F}"> 
+				
+			<Shortcut Id="MainAppShortcut" 
+					  Name="IAM Heimdall"
+					  Target="[APPLICATIONFOLDER]IAMHeimdall.exe"
+					  Directory="InstallProgramMenuFolder"
+					  WorkingDirectory="APPLICATIONFOLDER"
+					  Icon="icon.ico"
+				/>
+				
+			<Shortcut Id="UninstallProduct"             
+                      Name="Uninstall"
+                      Description="Uninstalls IAM Heimdall"
+                      Target="[System64Folder]msiexec.exe"
+					  Directory="InstallProgramMenuFolder"
+                      Arguments="/x [ProductCode]"/>
+				
+			<!-- Unique Key for Component Shortcut-->
+			<RegistryValue Id="RegShortcutKey" Root="HKCU" Key="SOFTWARE\$(loc.ProductNameFolder)" Name="Shortcut" Value="1" Type="integer" KeyPath="yes"/>
+				
+			<!-- Remove start menu items   -->
+			<RemoveFolder Id="RemoveStartMenu" Directory="InstallProgramMenuFolder" On="uninstall"/>
+
+			</Component>
+
+			
+			<!-- Desktop Shortcut Creation-->
+			<Component Id= "MainAppShortcutDesktop" Guid="{85B08D7F-D912-44E6-B35E-BDA017609921}">
+
+				<Shortcut Id="MainAppShortcutDesktop"
+						  Name="IAMHeimdall"
+						  Target="[APPLICATIONFOLDER]IAMHeimdall.exe"
+						  Directory="DesktopFolder"
+						  WorkingDirectory="APPLICATIONFOLDER"
+						   Icon="icon.ico"
+						  />
+				
+			<!-- Unique Key for Component Desktop Shortcut-->
+			<RegistryValue Id="RegDesktopShortcutKey" Root="HKCU" Key="SOFTWARE\$(loc.ProductNameFolder)" Name="DesktopShortcut" Value="1" Type="integer" KeyPath="yes"/>
+
+			</Component>
+			
+		</DirectoryRef>
+		
+	</Fragment>
+	
+</Wix>

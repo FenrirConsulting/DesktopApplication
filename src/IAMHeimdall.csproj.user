@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>\\Companycifsp03\IAM_Script\IAMTools\IAMHeimdall\64Installation\|\\Companycifsp03\IAM_Script\IAMTools\IAMHeimdall\Installation\|C:\Repositories\IAMHeimdall\|\\Companycifsp03\IAM_Script\IAMTools\|\\Companycifsp03\IAM_Script\IAMTools\IAMHeimdall\Install\</PublishUrlHistory>
+    <InstallUrlHistory />
+    <SupportUrlHistory />
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Source\repos\heimdalldesktop\src\Properties\PublishProfiles\FolderProfile1.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="MVVM\GroupsModule\View\GroupsAddRecordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\GroupsModule\View\GroupsTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\GroupsModule\View\GroupsUpdateRecordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\KerberosModule\View\KerberosView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\KerberosModule\View\KerberosServersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\KerberosModule\View\KerberosGroupsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\KerberosModule\View\KerberosUsersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\KerberosModule\View\KerberosGroupsUpdateRecordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\KerberosModule\View\KerberosGroupsAddRecordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\KerberosModule\View\KerberosUsersUpdateRecordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\KerberosModule\View\KerberosUsersAddRecordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\IAMToolModule\View\IAMToolModuleMainView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\IAMToolModule\View\IAMToolGetUserView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\IAMToolModule\View\IAMToolGetComputerRolesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\IAMToolModule\View\IAMToolGroupQueryView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\IAMToolModule\View\IAMToolAddGroupView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\FacilitatorToolModule\View\FacilitatorToolMainView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\FacilitatorToolModule\View\FacilitatorQueryView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\IAMToolModule\View\IAMToolUpdateModelView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\FacilitatorToolModule\View\FacilitatorMaintenanceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ADLookupModule\View\ADLookupMainView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ADLookupModule\View\ADLookupEmpNumberView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ADLookupModule\View\ADLookupEmailStatusView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ADLookupModule\View\ADLookupGetFolderView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ADLookupModule\View\ADLookupGroupsLookupView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ADLookupModule\View\ADLookupGroupMembersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ADLookupModule\View\ADLookupHierarchySearchView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ADLookupModule\View\ADLookupADExportView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\AccessNowModule\View\AccessNowReportsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\UsersModule\View\UsersAddRecordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\UsersModule\View\UsersTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\UsersModule\View\UsersUpdateRecordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\FacilitatorToolModule\View\RequestUpdateView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ReportsModule\View\ReportsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ServiceCatalogModule\View\ServiceCatalogMainView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ServiceCatalogModule\View\ServiceCatalogLookupView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ServiceCatalogModule\View\ServiceCatalogUpdateView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ServiceCatalogModule\View\ServiceCatalogAddView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ServiceCatalogModule\View\ServiceCatalogConfigurationView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\ManualCompletionModule\View\ManualCompletionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\AccessNowModule\View\AccessNowCloseTicketView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\FacilitatorToolModule\View\FactoolExpectedTableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\FacilitatorToolModule\View\FactoolExpectedAddView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\FacilitatorToolModule\View\FactoolExpectedUpdateView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\View\TestingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\UserConfiguration\View\UserConfigurationView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MVVM\GroupsModule\View\GroupsAddRecordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\GroupsModule\View\GroupsTableView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\GroupsModule\View\GroupsUpdateRecordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\KerberosModule\View\KerberosView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\KerberosModule\View\KerberosServersView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\KerberosModule\View\KerberosGroupsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\KerberosModule\View\KerberosUsersView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\KerberosModule\View\KerberosGroupsUpdateRecordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\KerberosModule\View\KerberosGroupsAddRecordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\KerberosModule\View\KerberosUsersUpdateRecordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\KerberosModule\View\KerberosUsersAddRecordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\IAMToolModule\View\IAMToolModuleMainView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\IAMToolModule\View\IAMToolGetUserView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\IAMToolModule\View\IAMToolGetComputerRolesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\IAMToolModule\View\IAMToolGroupQueryView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\IAMToolModule\View\IAMToolAddGroupView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\FacilitatorToolModule\View\FacilitatorToolMainView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\FacilitatorToolModule\View\FacilitatorQueryView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\IAMToolModule\View\IAMToolUpdateModelView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\FacilitatorToolModule\View\FacilitatorMaintenanceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ADLookupModule\View\ADLookupMainView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ADLookupModule\View\ADLookupEmpNumberView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ADLookupModule\View\ADLookupEmailStatusView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ADLookupModule\View\ADLookupGetFolderView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ADLookupModule\View\ADLookupGroupsLookupView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ADLookupModule\View\ADLookupGroupMembersView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ADLookupModule\View\ADLookupHierarchySearchView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ADLookupModule\View\ADLookupADExportView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\AccessNowModule\View\AccessNowReportsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\AccessNowModule\View\AccessNowCloseTicketView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\FacilitatorToolModule\View\FactoolExpectedTableView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\FacilitatorToolModule\View\FactoolExpectedAddView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\FacilitatorToolModule\View\FactoolExpectedUpdateView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\View\LoggingView - Copy.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\UsersModule\View\UsersAddRecordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\UsersModule\View\UsersTableView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\UsersModule\View\UsersUpdateRecordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\FacilitatorToolModule\View\RequestUpdateView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ReportsModule\View\ReportsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ServiceCatalogModule\View\ServiceCatalogMainView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ServiceCatalogModule\View\ServiceCatalogLookupView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ServiceCatalogModule\View\ServiceCatalogUpdateView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ServiceCatalogModule\View\ServiceCatalogAddView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ServiceCatalogModule\View\ServiceCatalogConfigurationView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\ManualCompletionModule\View\ManualCompletionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\View\TestingView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\UserConfiguration\View\UserConfigurationView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

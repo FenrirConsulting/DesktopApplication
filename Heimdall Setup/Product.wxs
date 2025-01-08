@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+	<!-- Give product a unique ID per platform-->
+	<?define ProductCode= "{62EE52E2-A7AF-4DA8-9385-4754F3CCABF7}"?>
+	
+	<!-- Fixed upgrade Id-->
+	<?define UpgradeCode = "{C38D8FD1-EE0B-4FC9-9DA4-05FC38C26F29}"?>
+	
+	<!-- Define main product-->
+	<Product Id="*"
+			 Name="!(loc.ProductName_$(var.Platform))" 
+			 Language="!(loc.Language)" 
+			 Version="$(var.BuildVersion)" 
+			 Manufacturer="!(loc.Company)" 
+			 UpgradeCode="$(var.UpgradeCode)">
+		
+		<!-- Provide Package Details-->
+		<Package InstallerVersion="200" 
+				 Compressed="yes" 
+				 InstallScope="perUser" 
+				 Platform="$(var.Platform)"
+				 Manufacturer="!(loc.Company)"
+				 Description="!(loc.Description)"
+				 Keywords="!(loc.Keywords)"
+				 Comments="!(loc.Comments)"
+				 Languages="!(loc.Language)"
+				 />
+
+		<!-- Downgrade Error Message-->
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeErrorMessage)" />
+		
+		<!-- Include .cab file into .msi file-->
+		<MediaTemplate 
+			EmbedCab="yes"
+			/>
+
+		<Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
+		<Upgrade Id="{C38D8FD1-EE0B-4FC9-9DA4-05FC38C26F29}">
+			<UpgradeVersion
+			   Minimum="1.9.0.0" Maximum="99.9.9.9"
+			   Property="PREVIOUSVERSIONSINSTALLED"
+			   IncludeMinimum="yes" IncludeMaximum="no" />
+		</Upgrade>
+
+		<!-- Define Main App Icon-->
+		<Icon Id="icon.ico" SourceFile="$(var.IAMHeimdall.ProjectDir)\bifrost.ico"/>
+		
+		<!-- Use the icon.ico icon for this installer (shows up in Add/Remove programs.)-->
+		<Property Id="ARPPRODUCTICON">icon.ico</Property>
+
+		<!-- Create a basic UI for the installer-->
+		<UI>
+			<UIRef Id="WixUI_Minimal"/>
+		</UI>
+
+
+		<!-- Change Installer Background Images-->
+		<WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\Assets\BifrostBackground.bmp"/>
+		<WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\Assets\BifrostBanner.bmp"/>
+		<WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\License.rtf"/>
+		
+		<!-- Define components, shortcuts, files etc... for installer -->
+		<Feature Id="ProductFeature" Title="IAMHeimdall" Level="1">
+			
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="PublishedComponents"/>
+			
+		</Feature>
+	</Product>
+</Wix>

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAMHeimdall", "src\IAMHeimdall.csproj", "{55DE686B-72BE-4311-96CF-8FDE925CB5F9}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Heimdall Setup", "Heimdall Setup\Heimdall Setup.wixproj", "{3AD11B01-CF1F-4E44-B6A2-A9A3ED2A8C68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55DE686B-72BE-4311-96CF-8FDE925CB5F9}.Debug|x86.ActiveCfg = Debug|x86
+		{55DE686B-72BE-4311-96CF-8FDE925CB5F9}.Debug|x86.Build.0 = Debug|x86
+		{55DE686B-72BE-4311-96CF-8FDE925CB5F9}.Release|x86.ActiveCfg = Release|x86
+		{55DE686B-72BE-4311-96CF-8FDE925CB5F9}.Release|x86.Build.0 = Release|x86
+		{3AD11B01-CF1F-4E44-B6A2-A9A3ED2A8C68}.Debug|x86.ActiveCfg = Debug|x86
+		{3AD11B01-CF1F-4E44-B6A2-A9A3ED2A8C68}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38BCAB54-07BE-47F8-852E-1F7CAA02BF2B}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,186 @@
+﻿<Application    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+                xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:view="clr-namespace:IAMHeimdall.MVVM.View"
+                xmlns:viewModel="clr-namespace:IAMHeimdall.MVVM.ViewModel"
+                mc:Ignorable="d"
+                x:Class="IAMHeimdall.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MainTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <FontFamily x:Key="Lato">pack://application:,,,/Resources/Fonts/#Lato</FontFamily>
+            <FontFamily x:Key="Montserrate">pack://application:,,,/Resources/Fonts/#Montserrate</FontFamily>
+            <FontFamily x:Key="NBold">pack://application:,,,/Resources/Fonts/#NBold</FontFamily>
+            <FontFamily x:Key="Norse">pack://application:,,,/Resources/Fonts/#Norse</FontFamily>
+            <FontFamily x:Key="OpenSans">pack://application:,,,/Resources/Fonts/#OpenSans</FontFamily>
+            <FontFamily x:Key="Oswald">pack://application:,,,/Resources/Fonts/#Oswald</FontFamily>
+            <FontFamily x:Key="Roboto">pack://application:,,,/Resources/Fonts/#Roboto</FontFamily>
+            <FontFamily x:Key="RunyTunes">pack://application:,,,/Resources/Fonts/#RunyTunes</FontFamily>
+            <FontFamily x:Key="Viking">pack://application:,,,/Resources/Fonts/#Viking</FontFamily>
+
+
+            <DataTemplate DataType="{x:Type viewModel:ServiceCatalogConfigurationViewModel}">
+                <view:ServiceCatalogConfigurationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ServiceCatalogAddViewModel}">
+                <view:ServiceCatalogAddView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ServiceCatalogLookupViewModel}">
+                <view:ServiceCatalogLookupView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ServiceCatalogUpdateViewModel}">
+                <view:ServiceCatalogUpdateView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ServiceCatalogMainViewModel}">
+                <view:ServiceCatalogMainView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ADLookupADExportViewModel}">
+                <view:ADLookupADExportView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ADLookupHierarchySearchViewModel}">
+                <view:ADLookupHierarchySearchView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ADLookupGroupMembersViewModel}">
+                <view:ADLookupGroupMembersView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ADLookupGroupsLookupViewModel}">
+                <view:ADLookupGroupsLookupView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ADLookupGetFolderViewModel}">
+                <view:ADLookupGetFolderView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ADLookupEmailStatusViewModel}">
+                <view:ADLookupEmailStatusView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ADLookupEmpNumberViewModel}">
+                <view:ADLookupEmpNumberView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ADLookupMainViewModel}">
+                <view:ADLookupMainView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:GroupsTableViewModel}">
+                <view:GroupsTableView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:UserConfigurationViewModel}">
+                <view:UserConfigurationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:GroupsUpdateRecordViewModel}">
+                <view:GroupsUpdateRecordView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:GroupsAddRecordViewModel}">
+                <view:GroupsAddRecordView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:UsersTableViewModel}">
+                <view:UsersTableView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:UsersUpdateRecordViewModel}">
+                <view:UsersUpdateRecordView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:UsersAddRecordViewModel}">
+                <view:UsersAddRecordView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:FeedbackViewModel}">
+                <view:FeedbackView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:AddFeedbackViewModel}">
+                <view:AddFeedbackView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:UpdateFeedbackViewModel}">
+                <view:UpdateFeedbackView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ClosedFeedbackViewModel}">
+                <view:ClosedFeedbackView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:LoggingViewModel}">
+                <view:LoggingView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:TestingViewModel}">
+                <view:TestingView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:KerberosViewModel}">
+                <view:KerberosView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:KerberosServersViewModel}">
+                <view:KerberosServersView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:KerberosGroupsViewModel}">
+                <view:KerberosGroupsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:KerberosUsersViewModel}">
+                <view:KerberosUsersView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:KerberosGroupsUpdateRecordViewModel}">
+                <view:KerberosGroupsUpdateRecordView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:KerberosGroupsAddRecordViewModel}">
+                <view:KerberosGroupsAddRecordView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:KerberosUsersUpdateRecordViewModel}">
+                <view:KerberosUsersUpdateRecordView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:KerberosUsersAddRecordViewModel}">
+                <view:KerberosUsersAddRecordView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:IAMToolModuleMainViewModel}">
+                <view:IAMToolModuleMainView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:IAMToolGetUserViewModel}">
+                <view:IAMToolGetUserView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:IAMToolGetComputerRolesViewModel}">
+                <view:IAMToolGetComputerRolesView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:IAMToolGroupQueryViewModel}">
+                <view:IAMToolGroupQueryView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:IAMToolAddGroupViewModel}">
+                <view:IAMToolAddGroupView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:IAMToolUpdateModelViewModel}">
+                <view:IAMToolUpdateModelView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:FacilitatorMainViewModel}">
+                <view:FacilitatorToolMainView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:FacilitatorRequestViewModel}">
+                <view:FacilitatorRequestView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:RequestUpdateViewModel}">
+                <view:RequestUpdateView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:FacilitatorQueryViewModel}">
+                <view:FacilitatorQueryView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:FacilitatorMaintenanceViewModel}">
+                <view:FacilitatorMaintenanceView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ReportsViewModel}">
+                <view:ReportsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:AccessNowCloseTicketViewModel}">
+                <view:AccessNowCloseTicketView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:AccessNowReportsViewModel}">
+                <view:AccessNowReportsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ManualCompletionViewModel}">
+                <view:ManualCompletionView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:FactoolExpectedTableViewModel}">
+                <view:FactoolExpectedTableView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:FactoolExpectedAddViewModel}">
+                <view:FactoolExpectedAddView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:FactoolExpectedUpdateViewModel}">
+                <view:FactoolExpectedUpdateView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

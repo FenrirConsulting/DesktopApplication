@@ -1,0 +1,564 @@
+﻿<UserControl x:Class="IAMHeimdall.MVVM.View.AccessNowReportsView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:d1="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:IAMHeimdall.MVVM.ViewModel"
+             xmlns:custom="clr-namespace:IAMHeimdall.Resources"
+             FontFamily="/IAMHeimdall;component/Resources/Fonts/#Lato"
+             mc:Ignorable="d1 d"
+             d:DesignHeight="800" d:DesignWidth="1000"
+             Background="{StaticResource TricornBlack}">
+    <UserControl.DataContext>
+        <viewModel:AccessNowReportsViewModel>
+        </viewModel:AccessNowReportsViewModel>
+    </UserControl.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:CallMethodAction TargetObject="{Binding}" MethodName="LoadData" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    
+    <Border
+            Margin="0"
+            BorderBrush="{StaticResource TricornBlack}"
+            BorderThickness="1">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Offset="0.0" Color="{StaticResource ResourceKey=JuteBrownColorDarker}" />
+                <GradientStop Offset="0.5" Color="{StaticResource ResourceKey=JuteBrownLighterColor}" />
+                <GradientStop Offset="1.0" Color="{StaticResource ResourceKey=JuteBrownColor}" />
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*" />
+                <RowDefinition Height="9.2*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Border Background="{StaticResource DeepOnyx}">
+                    <Label Content="AccessNow Reports"
+                   Width="Auto"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Style="{StaticResource HeaderLabelStyle}"
+                   Foreground="{StaticResource StoneWhite}"
+                   FontWeight="Bold" />
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="8*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*" />
+                        <RowDefinition Height="2.0*" />
+                        <RowDefinition Height="5.5*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Border BorderBrush="{StaticResource FossilGrey}"
+                                    Grid.Row="0"
+                                    BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="6*" />
+                                <RowDefinition Height="2*" />
+                            </Grid.RowDefinitions>
+                            <Label x:Name="tableLabel"
+                                    Content="Report Selection:"
+                                    Height="28"
+                                   Grid.Row="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource LabelStyle}"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    FontWeight="Bold" />
+
+                            <Border CornerRadius="5"
+                                                    Background="{StaticResource TricornBlack}"
+                                                    Width="Auto"
+                                                    Height="26"
+                                                    Grid.Row="1"
+                                                    Margin="10,0,10,4">
+                                <ComboBox x:Name="FormTypeBox"
+                                                    Style="{StaticResource ComboBoxTheme}"
+                                                    Margin="3"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Stretch"
+                                                    Width="Auto"
+                                                    SelectedIndex="0"
+                                                    ItemsSource="{Binding AvailableReports}"
+                                                    DisplayMemberPath="DisplayName"
+                                                    SelectedItem="{Binding SelectedReport}" />
+                            </Border>
+
+                            <Button x:Name="GetTable"
+                                    Grid.Row="2"
+                                    Content="Load Report"
+                                    Style="{StaticResource ButtonStyle}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,0,5"
+                                    FontWeight="Bold"
+                                    Command="{Binding LoadReportCommand}" />
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="{StaticResource FossilGrey}"
+                                    Grid.Row="1"
+                                    BorderThickness="1"
+                                     Visibility="{Binding Path=DateVisibileBool, Converter={StaticResource BoolToVis}}"
+                                    >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1.5*" />
+                                <RowDefinition Height="7*" />
+                                <RowDefinition Height="1.5*" />
+                            </Grid.RowDefinitions>
+                            <Label x:Name="dateLabel"
+                                    Content="Date Range:"
+                                    Height="28"
+                                    Grid.Row="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource LabelStyle}"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    FontWeight="Bold" />
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="7*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5*" />
+                                    <RowDefinition Height="5*" />
+                                </Grid.RowDefinitions>
+
+                                <Label Content="From"
+                                       Grid.Row="0"
+                                       Grid.Column="0"
+                                       Padding="0"
+                                       Style="{StaticResource LabelStyle}"
+                                       Margin="4"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource StoneWhite}"
+                                       FontWeight="Bold" />
+
+                                <DatePicker     x:Name="FromDateBox"
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       Margin="4,0,4,0"
+                                       SelectedDateFormat="Short"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Center"
+                                       Width="Auto"
+                                       SelectedDate="{Binding FromSelectedDate,UpdateSourceTrigger=PropertyChanged}"
+                                       DisplayDateStart="{Binding FromStartDate,UpdateSourceTrigger=PropertyChanged}"
+                                       DisplayDateEnd="{Binding FromEndDate,UpdateSourceTrigger=PropertyChanged}" />
+
+                                <Label Content="To"
+                                       Grid.Row="1"
+                                       Grid.Column="0"
+                                       Padding="0"
+                                       Style="{StaticResource LabelStyle}"
+                                       Margin="4"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource StoneWhite}"
+                                       FontWeight="Bold" />
+
+                                <DatePicker     x:Name="ToDateBox"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       Margin="4,0,4,0"
+                                       SelectedDateFormat="Short"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Center"
+                                       Width="Auto"
+                                       SelectedDate="{Binding ToSelectedDate,UpdateSourceTrigger=PropertyChanged}"
+                                       DisplayDateStart="{Binding ToStartDate,UpdateSourceTrigger=PropertyChanged}"
+                                       DisplayDateEnd="{Binding ToEndDate,UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="{StaticResource FossilGrey}"
+                                    Grid.Row="2"
+                                    BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="8*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+
+                            <Label x:Name="updateLabel"
+                                    Content="Column Selection:"
+                                    Height="28"
+                                   Grid.Row="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource LabelStyle}"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    FontWeight="Bold" />
+
+                            <ListView  x:Name="ColumnListView"
+                                               Grid.Row="1"
+                                               Style="{StaticResource ListBoxStyle}"
+                                               Margin="4,4,4,4"
+                                               ItemsSource="{Binding DisplayColumns}"
+                                               SelectionMode="Single"
+                                               SelectedItem="{Binding SelectedDisplayColumn}">
+                                <ListView.InputBindings>
+                                    <KeyBinding     Key="Space"
+                                                    Command="{Binding SpaceCheckboxCommand}" />
+                                </ListView.InputBindings>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <CheckBox IsTabStop="True"
+                                                      IsChecked="{Binding IsSelected, Mode=TwoWay}">
+                                                <CheckBox.Content>
+                                                    <TextBox Text="{Binding BoxItem}"
+                                                             IsReadOnly="True">
+                                                    </TextBox>
+                                                </CheckBox.Content>
+                                            </CheckBox>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <Button x:Name="UpdateColumns"
+                                    Grid.Row="2"
+                                    Content="Update Columns"
+                                    Style="{StaticResource ButtonStyle}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,0,5"
+                                    FontWeight="Bold"
+                                    Command="{Binding UpdateColumnsCommand}" />
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="{StaticResource FossilGrey}"
+                                    Grid.Row="3"
+                                    BorderThickness="1">
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*" />
+                                <RowDefinition Height="7*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Label x:Name="exportsLabel"
+                                    Content="Export To:"
+                                    Height="28"
+                                    DockPanel.Dock="Top"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource LabelStyle}"
+                                    Foreground="{StaticResource StoneWhite}"
+                                    FontWeight="Bold" />
+                            </Grid>
+                            <StackPanel Orientation="Horizontal"
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                <Button x:Name="clipboardButton"
+                                BorderThickness="0"
+                                ToolTip="Clipboard Export"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Width="30"
+                                Style="{StaticResource TitleButtonTheme}"
+                                Margin="5"
+                                Height="30"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                DockPanel.Dock="Right"
+                                Foreground="White"
+                                Command="{Binding ClipboardExportCommand}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/Clipboard.png" />
+                                    </Button.Background>
+                                </Button>
+
+                                <Button x:Name="csvButton"
+                                BorderThickness="0"
+                                ToolTip="CSV Export"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Width="30"
+                                RenderTransformOrigin="-0.736,-1.222"
+                                Style="{StaticResource TitleButtonTheme}"
+                                Margin="5"
+                                Height="30"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                DockPanel.Dock="Right"
+                                Foreground="Transparent"
+                                Command="{Binding CSVExportCommand}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/CSVExport.png" />
+                                    </Button.Background>
+                                </Button>
+
+                                <Button x:Name="htmlButton"
+                                Grid.Column="3"
+                                BorderThickness="0"
+                                ToolTip="HTML Export"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Width="30"
+                                RenderTransformOrigin="-0.736,-1.222"
+                                Style="{StaticResource TitleButtonTheme}"
+                                Margin="5"
+                                Height="30"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                DockPanel.Dock="Right"
+                                Foreground="Transparent"
+                                Command="{Binding HTMLExportCommand}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/HtmlExport.png" />
+                                    </Button.Background>
+                                </Button>
+
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Column="1">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.7*" />
+                            <RowDefinition Height="8.8*" />
+                            <RowDefinition Height="0.5*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Border BorderBrush="{StaticResource FossilGrey}"
+                                    BorderThickness="1">
+                            </Border>
+
+                            <DockPanel>
+                                <TextBox x:Name="searchBox"
+                         Width="200"
+                         Height="40"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Style="{StaticResource TextBoxStyle}"
+                         VerticalAlignment="Bottom"
+                         Margin="2,0,0,4"
+                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="GotFocus">
+                                            <i:InvokeCommandAction Command="{Binding ClearSearch}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <TextBox.InputBindings>
+                                        <KeyBinding Key="Enter"
+                                    Command="{Binding SearchEnterKey}" />
+                                    </TextBox.InputBindings>
+                                </TextBox>
+                                <ComboBox x:Name="criteriaBox"
+                          Style="{StaticResource ComboBoxTheme}"
+                          Margin="5,0,0,5"
+                          VerticalAlignment="Bottom"
+                          HorizontalAlignment="Left"
+                          Height="40"
+                          Width="141"
+                          SelectedIndex="0"
+                          ItemsSource="{Binding SearchTerms}"
+                          DisplayMemberPath="SearchTerm"
+                          SelectedItem="{Binding SelectedTerm}">
+                                </ComboBox>
+                                <Button x:Name="searchButton"
+                                    ToolTip="Search"
+                                    BorderThickness="0"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                    Width="40"
+                                    RenderTransformOrigin="-0.736,-1.222"
+                                    Style="{StaticResource TitleButtonTheme}"
+                                    Margin="5,0,0,5"
+                        HorizontalAlignment="Left"
+                        Height="40"
+                        VerticalAlignment="Bottom"
+                        Command="{Binding SearchQuery}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/SearchResults.png" />
+                                    </Button.Background>
+                                </Button>
+                                <Button x:Name="clearButton"
+                        BorderThickness="0"
+                        ToolTip="Clear Results"
+                        WindowChrome.IsHitTestVisibleInChrome="True"
+                        Width="40"
+                        Height="40"
+                        RenderTransformOrigin="-0.736,-1.222"
+                        Style="{StaticResource TitleButtonTheme}"
+                        Margin="10,0,0,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Command="{Binding ClearQuery}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/Cancel_16x.png" />
+                                    </Button.Background>
+                                </Button>
+                                
+                                <Label Content="No Results Found"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Style="{StaticResource LabelStyle}"
+                       Foreground="{StaticResource VikingRed}"
+                        Visibility="{Binding Path=NoFoundResults, Converter={StaticResource BoolToVis}}"
+                       FontWeight="Bold"
+                       Margin="0" />
+
+                                <Label Content="{Binding RecordCount}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Style="{StaticResource LabelStyle}"
+                                Foreground="{StaticResource NeonBlue}"
+                                FontWeight="Bold"
+                                Margin="0" />
+
+                            </DockPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <custom:LoadingSpinner
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsLoading="{Binding IsLoadBool}"
+                                Panel.ZIndex="1"
+                                Thickness="5"
+                                Cap="Round"
+                                Diameter="100" />
+
+                            <DataGrid   x:Name="ReportsDisplayGrid"
+                                    AutoGenerateColumns="True"
+                                    Panel.ZIndex="0"
+                                    HorizontalAlignment="Stretch"
+                                    Margin="0"
+                                    Grid.Row="1"
+                                    Style="{StaticResource ThemedDataGrid}"
+                                    BorderBrush="{x:Null}"
+                                    ItemsSource="{Binding DisplayView}"
+                                    IsReadOnly="True"
+                                    MinWidth="150"
+                                    SelectionMode="Single"
+                                    SelectionUnit="Cell"
+                                    ColumnWidth="Auto"
+                                    CurrentCell="{Binding CellInfo, Mode=TwoWay}">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu Style="{StaticResource ContextMenuStyle}">
+                                        <MenuItem Header="Copy" Command="Copy"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                            </DataGrid>
+                        </Grid>
+
+                        <Grid Grid.Row="2">
+                            <Border BorderBrush="{StaticResource FossilGrey}"
+                            BorderThickness="1"
+                            Grid.Row="2"
+                            ></Border>
+
+                            <DockPanel
+                   x:Name="pagePanel"
+                   VerticalAlignment="Bottom"
+                   Margin="0"
+                   Height="35"
+                   DataContext="{Binding}"
+                   Background="{StaticResource DeepOnyx}">
+                                <DockPanel HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Margin="0,0,0,5">
+                                    <TextBlock Text="Total Records: "
+                           Style="{StaticResource PageLabels}"
+                           HorizontalAlignment="Right" />
+                                    <TextBlock Text="{Binding Pagination.TotalItems, NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                           Style="{StaticResource PageLabels}"
+                           HorizontalAlignment="Right"
+                           Foreground="{StaticResource NeonBlue}" />
+                                    <TextBlock Text="|"
+                           Style="{StaticResource PageLabels}" />
+                                    <TextBlock Text="Displayed Records"
+                           Style="{StaticResource PageLabels}"
+                           HorizontalAlignment="Right" />
+                                    <TextBox x:Name="DisplayedRecordsTextBox"
+                         Text="{Binding Pagination.ItemsPerPage, NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource SmallTextBox}">
+                                        <TextBox.InputBindings>
+                                            <KeyBinding Key="Enter"
+                                    Command="{Binding EnterCalculation}"
+                                    CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}" />
+                                        </TextBox.InputBindings>
+                                    </TextBox>
+                                </DockPanel>
+                                <DockPanel HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       DockPanel.Dock="Right"
+                       Height="35"
+                       Margin="0,0,5,0">
+                                    <TextBlock Text="Page"
+                           Style="{StaticResource PageLabels}" />
+                                    <TextBlock Text="{Binding Pagination.CurrentPage,  NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                           Style="{StaticResource PageLabels}"
+                           Foreground="{StaticResource NeonBlue}" />
+                                    <TextBlock Text="of"
+                           Style="{StaticResource PageLabels}" />
+                                    <TextBlock Text="{Binding Pagination.TotalPages, NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                           Style="{StaticResource PageLabels}"
+                           Foreground="{StaticResource NeonBlue}" />
+                                    <TextBlock Text="|"
+                           Style="{StaticResource PageLabels}" />
+                                    <TextBlock Text="Go to : "
+                           Style="{StaticResource PageLabels}"
+                           HorizontalAlignment="Center" />
+                                    <TextBox   Text="{Binding Pagination.CurrentPage,  NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                           Style="{StaticResource SmallTextBox}"
+                           Margin="5,0,0,0" />
+                                    <Button x:Name="NextPage"
+                        Content="Next"
+                        Style="{StaticResource ButtonStyle}"
+                        Width="100" Height="22"
+                        Margin="5,0,0,0"
+                        FontWeight="Bold" DockPanel.Dock="Right"
+                        Command="{Binding ChangePage}"
+                        CommandParameter="1" />
+                                    <Button x:Name="PreviousPage"
+                        Content="Previous"
+                        Style="{StaticResource ButtonStyle}"
+                        Width="100" Height="22"
+                        Margin="5,0,0,0"
+                        FontWeight="Bold"
+                        DockPanel.Dock="Right"
+                        Command="{Binding ChangePage}"
+                        CommandParameter="0" />
+                                </DockPanel>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Border>
+
+</UserControl>

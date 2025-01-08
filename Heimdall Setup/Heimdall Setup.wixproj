@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.10</ProductVersion>
+    <ProjectGuid>3ad11b01-cf1f-4e44-b6a2-a9a3ed2a8c68</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>HeimdallApp_Setup</OutputName>
+    <OutputType>Package</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <Cultures>en-US</Cultures>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Components.wxs" />
+    <Compile Include="ComponentsGenerated.wxs" />
+    <Compile Include="Directories.wxs" />
+    <Compile Include="Product.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Common.wxl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\IAMHeimdall.csproj">
+      <Name>IAMHeimdall</Name>
+      <Project>{55de686b-72be-4311-96cf-8fde925cb5f9}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>APPLICATIONFOLDER</RefTargetDir>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\BifrostBackground.bmp" />
+    <Content Include="Assets\BifrostBanner.bmp" />
+    <Content Include="Assets\License.rtf" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
+  <Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
+    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
+  </Target>
+  <Target Name="BeforeBuild">
+    <!-- <Exec Command=" &quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\SignTool.exe&quot; sign /f C:\Source\OlsonCert.pfx &quot;C:\Source\repos\IAMHeimdall\bin\publish\IAMHeimdall.exe&quot;" /> -->
+    <!-- Define some variables we need -->
+    <GetAssemblyIdentity AssemblyFiles="..\bin\publish\IAMHeimdall.dll">
+      <Output TaskParameter="Assemblies" ItemName="AssemblyVersion" />
+    </GetAssemblyIdentity>
+    <PropertyGroup>
+      <DefineConstants>
+		  BuildVersion=%(AssemblyVersion.Version); 
+		  BasePath=..\bin\publish</DefineConstants>
+    </PropertyGroup>
+    <!-- Harvest file components from publish folder-->
+    <HeatDirectory OutputFile="ComponentsGenerated.wxs" DirectoryRefId="APPLICATIONFOLDER" ComponentGroupName="PublishedComponents" SuppressCom="true" SuppressFragments="true" SuppressRegistry="true" SuppressRootDirectory="true" AutoGenerateGuids="false" GenerateGuidsNow="true" ToolPath="$(WixToolPath)" Directory="..\bin\publish" PreprocessorVariable="var.BasePath" RunAsSeparateProcess="true"/>
+  </Target>
+  <Target Name="AfterBuild">
+    <!-- Copy MSI To Shared Drive Location -->
+	 <!-- <Exec Command=" &quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\SignTool.exe&quot; sign /f C:\Source\OlsonCert.pfx &quot;C:\Source\repos\IAMHeimdall\Heimdall Setup\bin\release\en-US\HeimdallApp_Setup.msi&quot;" /> --> 
+  </Target>
+</Project>

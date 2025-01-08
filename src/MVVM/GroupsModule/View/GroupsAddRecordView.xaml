@@ -1,0 +1,165 @@
+﻿<UserControl x:Class="IAMHeimdall.MVVM.View.GroupsAddRecordView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:d1="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:IAMHeimdall.MVVM.ViewModel"
+             FontFamily="/IAMHeimdall;component/Resources/Fonts/#Lato"
+             mc:Ignorable="d1 d"
+              d:DesignHeight="600"
+             d:DesignWidth="300"
+             Background="{StaticResource TricornBlack}">
+    <UserControl.DataContext>
+        <viewModel:GroupsAddRecordViewModel>
+        </viewModel:GroupsAddRecordViewModel>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:CallMethodAction TargetObject="{Binding}" MethodName="OnLoad" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Offset="0.0" Color="{StaticResource ResourceKey=JuteBrownColorDarker}" />
+                <GradientStop Offset="0.5" Color="{StaticResource ResourceKey=JuteBrownLighterColor}" />
+                <GradientStop Offset="1.0" Color="{StaticResource ResourceKey=JuteBrownColor}" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Label Content="Add Group"
+                       Width="278"
+                       Height="50"
+                       HorizontalContentAlignment="Center"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource HugeLabelStyle}"
+                       Foreground="{StaticResource StoneWhite}"
+                       FontWeight="Bold" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Label         x:Name="loggedInLabel"
+                               Grid.Column="1"
+                               Height="50"
+                               Style="{StaticResource LabelStyle}"
+                               FontWeight="ExtraBold"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="{StaticResource NeonBlue}"
+                               DockPanel.Dock="Bottom"
+                               Margin="0,0,0,0">
+                    <TextBlock Text="{Binding LoggedInAs}" />
+                </Label>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0"
+                                x:Name="GIDPanel"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                    <Label x:Name="GIDLabel" Content="GID"
+                               Width="143"
+                               Height="33"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                    <Border CornerRadius="15"
+                                Background="{StaticResource TricornBlack}"
+                                Width="200"
+                                Height="50">
+                        <TextBox x:Name="GIDBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Style="{StaticResource UpdateBox}"
+                                     VerticalAlignment="Center"
+                                     Text="{Binding GIDString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                                x:Name="GroupPanel"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                    <Label x:Name="GroupLabel"
+                               Content="Group"
+                               Width="143"
+                               Height="33"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                    <Border CornerRadius="15"
+                                Background="{StaticResource TricornBlack}"
+                                Width="200"
+                                Height="50">
+                        <TextBox x:Name="GroupBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Style="{StaticResource UpdateBox}"
+                                     VerticalAlignment="Center"
+                                     Text="{Binding GroupNameString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2"
+                                x:Name="GroupLobPanel"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                    <Label x:Name="GroupLobLabel"
+                               Content="LOB"
+                               Width="143"
+                               Height="33"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{StaticResource LabelStyle}"
+                               Foreground="{StaticResource StoneWhite}"
+                               FontWeight="Bold" />
+                    <ComboBox x:Name="GroupLobBox"
+                                  Style="{StaticResource ComboBoxTheme}"
+                                  Grid.Column="1"
+                                  Margin="5,0,5,4"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Right"
+                                  SelectedIndex="0"
+                                  ItemsSource="{Binding SearchTermsGroups}"
+                                  DisplayMemberPath="BoxItem"
+                                  SelectedItem="{Binding SelectedTermGroup}"
+                                  Height="50"
+                                  Width="200">
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Button x:Name="addGroupRecord"
+                                Content="Add Group Record"
+                                Style="{StaticResource ButtonStyle}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontWeight="Bold"
+                                Grid.Column="3"
+                                Command="{Binding AddGroupRecordCommand}" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,204 @@
+﻿<UserControl x:Class="IAMHeimdall.MVVM.View.UpdateFeedbackView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:d1="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             FontFamily="/IAMHeimdall;component/Resources/Fonts/#Lato"
+             mc:Ignorable="d1 d"
+             d:DesignHeight="800" d:DesignWidth="300"
+             Background="{StaticResource TricornBlack}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    <Border Margin="0"
+            BorderBrush="{StaticResource TricornBlack}"
+            BorderThickness="1">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Offset="0.0" Color="{StaticResource ResourceKey=JuteBrownColorDarker}" />
+                <GradientStop Offset="0.5" Color="{StaticResource ResourceKey=JuteBrownLighterColor}" />
+                <GradientStop Offset="1.0" Color="{StaticResource ResourceKey=JuteBrownColor}" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1.5*" />
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Label Content="Update Feedback"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource HugeLabelStyle}"
+                       Foreground="{StaticResource StoneWhite}"
+                       FontWeight="Bold" />
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="RequestorLabel"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left">
+                        <TextBox Text="{Binding Requestor}"
+                                 Style="{StaticResource TexturedLabels}" />
+                    </Label>
+                    <Label x:Name="ReqIDLabel"
+                           Grid.Column="1"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center">
+                        <TextBox Text="{Binding UpdateRecord}"
+                                   Style="{StaticResource TexturedLabels}" />
+                    </Label>
+                    <Label x:Name="TypeLabel"
+                           Grid.Column="2"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center">
+                        <TextBox Text="{Binding RequestType}"
+                                 Style="{StaticResource TexturedLabels}" />
+                    </Label>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="CreatedDateLabel"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource LabelStyle}">
+                        <TextBox Text="{Binding RequestDate}"
+                                 Style="{StaticResource TexturedLabels}" />
+                    </Label>
+                    <Label x:Name="UpdatedDateLabel"
+                           Grid.Column="1"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource LabelStyle}">
+                        <TextBox Text="{Binding UpdateDate}"
+                                   Style="{StaticResource TexturedLabels}" />
+                    </Label>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Label  x:Name="RequestLabel"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Grid.Row="0">
+                        <TextBox Text="{Binding Request}"
+                                     Style="{StaticResource TexturedLabels}"
+                                     Foreground="{StaticResource StoneWhite}" />
+                    </Label>
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      x:Name="RequestUpdateGrid">
+                    <Label x:Name="RequestUpdate"
+                           Grid.Row="0"
+                           Margin="5"
+                           Background="{StaticResource FossilGrey}">
+                        <TextBox Text="{Binding RequestUpdate}"
+                                 Style="{StaticResource TexturedLabels}"
+                                 VerticalAlignment="Stretch"
+                                 HorizontalAlignment="Stretch"
+                                 TextWrapping="Wrap"
+                                 IsReadOnly="True" />
+                    </Label>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Border CornerRadius="15"
+                            Background="{StaticResource TricornBlack}"
+                            Margin="2,0,0,2">
+                        <TextBox x:Name="updateRequestBox"
+                                 VerticalContentAlignment="Center"
+                                 AcceptsReturn="True"
+                                 Style="{StaticResource MultiLineBox}"
+                                 Text="{Binding UpdateAddition,UpdateSourceTrigger=PropertyChanged}"
+                                 Height="Auto"
+                                 Width="Auto"
+                                 TextWrapping="Wrap"
+                                 Margin="2,0,0,2">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="GotFocus">
+                                    <i:InvokeCommandAction Command="{Binding ClearUpdateButton}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="5*" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="closeRecord"
+                            Content="Close Record"
+                            Grid.Row="0"
+                            Style="{StaticResource ButtonStyle}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="0,2"
+                            FontWeight="Bold"
+                            Command="{Binding CloseButtonCommand}"
+                            Width="130"
+                            Visibility="{Binding Path=ClosedEnabled, Converter={StaticResource BoolToVis}}" />
+                    <Button x:Name="deleteRecord"
+                            Content="Delete Record"
+                            Grid.Row="1"
+                            Style="{StaticResource ButtonStyle}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="0,2"
+                            FontWeight="Bold"
+                            Command="{Binding DeleteButtonCommand}"
+                            Width="130"
+                            Visibility="{Binding Path=ClosedEnabled, Converter={StaticResource BoolToVis}}" />
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Button x:Name="updateRecord"
+                            Content="Update Record"
+                            Style="{StaticResource ButtonStyle}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="0,0,0,0"
+                            FontWeight="Bold"
+                            Command="{Binding UpdateButtonCommand}"
+                            Width="130" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

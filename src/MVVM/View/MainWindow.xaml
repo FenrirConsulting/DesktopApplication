@@ -1,0 +1,321 @@
+﻿<Window x:Name="bifrostWindow" x:Class="IAMHeimdall.MVVM.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:IAMHeimdall.MVVM.ViewModel"
+        xmlns:local="clr-namespace:IAMHeimdall.Resources.Behaviors"
+        mc:Ignorable="d"
+        Title="IAM Heimdall"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="CanResizeWithGrip"
+        FontFamily="/IAMHeimdall;component/Resources/Fonts/#Lato"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Margin="0"
+        Height="800"
+        Width="1400">
+    <Window.DataContext>
+        <viewModel:MainViewModel>
+        </viewModel:MainViewModel>
+    </Window.DataContext>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:CallMethodAction TargetObject="{Binding}" MethodName="LoadVM" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="{Binding ActualHeight,ElementName=TitlePanel}"
+                      ResizeBorderThickness="10" />
+    </WindowChrome.WindowChrome>
+    <Border Background="{StaticResource FossilGrey}"
+                CornerRadius="20"
+            Margin="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="43"
+                               Name ="titlebar" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Row="0"
+                       Fill="{StaticResource FossilGrey}"
+                       Grid.ColumnSpan="2"
+                       RadiusX="10"
+                       RadiusY="10" Margin="0,0,0,17" Height="40" />
+            <Grid Grid.Row="0">
+                <DockPanel x:Name="TitlePanel"
+                           Grid.ColumnSpan="2"
+                           Margin="0"
+                           Height="40">
+                    <Image x:Name="titleImage"
+                           Source="/IAMHeimdall;component/Resources/Images/bifrost.png"
+                           Margin="5,0,0,2"
+                           RenderTransformOrigin="-0.111,1.083"
+                           Width="35"
+                           HorizontalAlignment="Left"
+                           Height="35"
+                           VerticalAlignment="Bottom" />
+                    <TextBlock x:Name="titleLabel"
+                               Text="IAM Heimdall "
+                               Foreground="{StaticResource TricornBlack}"
+                               FontSize="44"
+                               Margin="2,0,0,1"
+                               FontFamily="/Resources/Fonts/#Norse"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Left"
+                               Height="40"
+                               Padding="0"
+                               Grid.IsSharedSizeScope="True" />
+                    <Button x:Name="settingsButton"
+                        BorderThickness="0"
+                        ToolTip="Settings"
+                        WindowChrome.IsHitTestVisibleInChrome="True"
+                        Width="30"
+                        RenderTransformOrigin="-0.736,-1.222"
+                        Style="{StaticResource TitleButtonTheme}"
+                        Height="30"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        DockPanel.Dock="Left"
+                        Foreground="Transparent"
+                        Visibility="{Binding Path=DevEnabled, Converter={StaticResource BoolToVis}}"
+                        Command="{Binding UpdateViewCommand}" CommandParameter="Settings">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/Settings.png" />
+                        </Button.Background>
+                    </Button>
+                    <DockPanel x:Name="TitleButtonPanel"
+                               HorizontalAlignment="Right"
+                               Height="38" LastChildFill="False"
+                               VerticalAlignment="Top" Margin="0,2,0,0"
+                               DockPanel.Dock="Right">
+                        <Button x:Name="closeButton"
+                                BorderThickness="0"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Width="24"
+                                Height="24"
+                                RenderTransformOrigin="-0.736,-1.222"
+                                Click="CloseButton_Click"
+                                Style="{StaticResource TitleButtonTheme}"
+                                Margin="0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                DockPanel.Dock="Right">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/ChromeClose_16x.png" />
+                            </Button.Background>
+                        </Button>
+                        
+                        <Button x:Name="resizeButton"
+                                BorderThickness="0"
+                                Content=""
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Width="24"
+                                Height="24"
+                                RenderTransformOrigin="1.681,0.639"
+                                Click="ResizeButton_Click"
+                                Style="{StaticResource TitleButtonTheme}"
+                                DockPanel.Dock="Right">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/ChromeMaximize_16x.png" />
+                            </Button.Background>
+                        </Button>
+                        
+                        <Button x:Name="minimizeButton"
+                                BorderThickness="0"
+                                HorizontalAlignment="Right"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Width="24" Click="MinimizeButton_Click"
+                                Style="{StaticResource TitleButtonTheme}" Height="24" VerticalAlignment="Top" RenderTransformOrigin="-0.083,-1.75" DockPanel.Dock="Right">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/IAMHeimdall;component/Resources/Images/Minimize_16x.png" />
+                            </Button.Background>
+                        </Button>
+                        
+                        <Label x:Name="loggedInLabel"
+                           Height="28"
+                           Style="{StaticResource LabelStyle}"
+                           FontWeight="Bold"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Right"
+                           Foreground="{StaticResource TricornBlack}"
+                           Margin="0,0,20,0">
+                            <TextBlock Text="{Binding LoggedInAs}" />
+                        </Label>
+                    </DockPanel>
+                </DockPanel>
+            </Grid>
+
+            <Grid Grid.Row="1"
+                   Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0"
+                     Margin="0">
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=Border1}" />
+                    </Grid.OpacityMask>
+                    <Border x:Name="Border1" CornerRadius="0,0,0,17">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Offset="0.0" Color="{StaticResource ResourceKey=JuteBrownColor}" />
+                                <GradientStop Offset="0.5" Color="{StaticResource ResourceKey=JuteBrownLighterColor}" />
+                                <GradientStop Offset="1.0" Color="{StaticResource ResourceKey=JuteBrownColorDarker}" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                    <DockPanel x:Name="menuPanel"
+                        Margin="0"
+                        Grid.Row="1">
+                        <RadioButton Content="Unix Groups"
+                                     Height="50"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     IsChecked="True"
+                                     Visibility="{Binding Path=UnixPermissionCheck, Converter={StaticResource BoolToVis}}"
+                                     Command="{Binding UpdateViewCommand}" CommandParameter="Groups"
+                                     DockPanel.Dock="Top"
+                                     VerticalAlignment="Top" />
+                        
+                        <RadioButton Content="Unix Users"
+                                     Height="50"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     IsChecked="True"
+                                     Visibility="{Binding Path=UnixPermissionCheck, Converter={StaticResource BoolToVis}}"
+                                     Command="{Binding UpdateViewCommand}" CommandParameter="Users"
+                                     DockPanel.Dock="Top"
+                                     VerticalAlignment="Top" />
+                        
+                        <RadioButton Content="Kerberos Data"
+                                     Height="50"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     IsChecked="True"
+                                     Visibility="{Binding Path=UnixPermissionCheck, Converter={StaticResource BoolToVis}}"
+                                     Command="{Binding UpdateViewCommand}" CommandParameter="Kerberos"
+                                     DockPanel.Dock="Top"
+                                     VerticalAlignment="Top" />
+              
+                        <Label x:Name="versionLabel"
+                               Height="28"
+                               Style="{StaticResource LabelStyle}"
+                               FontWeight="Bold"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Right"
+                               Foreground="{StaticResource NeonBlue}"
+                               FontFamily="/Resources/Fonts/#Norse"
+                               DockPanel.Dock="Bottom"
+                               Margin="0,0,20,0">
+                            <TextBlock Text="{Binding VersionNumber}" />
+                        </Label>
+                        
+                        <Label x:Name="higherVersionLabel"
+                               Height="28"
+                               Style="{StaticResource LabelStyle}"
+                               FontWeight="Bold"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Right"
+                               Foreground="{StaticResource VikingRed}"
+                               FontFamily="/Resources/Fonts/#Norse"
+                               DockPanel.Dock="Bottom"
+                               Visibility="{Binding Path=HigherVersionCheck, Converter={StaticResource BoolToVis}}"
+                               Margin="0,0,20,0">
+                            <TextBlock Text="New Version Available" />
+                        </Label>
+                        
+                        <RadioButton x:Name="DevToolsButton"
+                                Content="Dev Tools"
+                                Height="50"
+                                Style="{StaticResource MenuButtonTheme}"
+                                DockPanel.Dock="Bottom"
+                                VerticalAlignment="Bottom"
+                                IsChecked="True"
+                                Visibility="{Binding Path=DevEnabled, Converter={StaticResource BoolToVis}}"
+                                local:ContextMenuLeftClickBehavior.IsLeftClickEnabled="True">
+                            <RadioButton.ContextMenu>
+                                <ContextMenu Style="{StaticResource TitleContextMenuStyle}"
+                                             IsOpen="{Binding ContextMenuOpen2}">
+                                    <ContextMenu.Template>
+                                        <ControlTemplate TargetType="{x:Type ContextMenu}">
+                                            <Grid Width="140">
+                                                <Border CornerRadius="5" BorderBrush="{StaticResource FossilGrey}" Background="Transparent" BorderThickness="3">
+                                                    <StackPanel>
+                                                        <RadioButton Content="Testing"
+                                                                 Height="50"
+                                                                 Style="{StaticResource MenuButtonTheme}"
+                                                                 IsChecked="True"
+                                                                 Visibility="{Binding Path=DevEnabled, Converter={StaticResource BoolToVis}}">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="Click">
+                                                                    <i:InvokeCommandAction Command="{Binding UpdateViewCommand}"
+                                                                                   CommandParameter="Testing" />
+                                                                    <i:InvokeCommandAction Command="{Binding CloseContextMenusCommand}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </RadioButton>
+                                                        <RadioButton Content="Logging"
+                                                                 Height="50"
+                                                                 Style="{StaticResource MenuButtonTheme}"
+                                                                 IsChecked="True"
+                                                                 Visibility="{Binding Path=DevEnabled, Converter={StaticResource BoolToVis}}">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="Click">
+                                                                    <i:InvokeCommandAction Command="{Binding UpdateViewCommand}"
+                                                                                   CommandParameter="Logging" />
+                                                                    <i:InvokeCommandAction Command="{Binding CloseContextMenusCommand}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </RadioButton>
+                                                    </StackPanel>
+                                                </Border>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </ContextMenu.Template>
+                                </ContextMenu>
+                            </RadioButton.ContextMenu>
+                        </RadioButton>
+                        
+                        <RadioButton Content="Upgrade"
+                             Height="50"
+                             Style="{StaticResource MenuButtonTheme}"
+                             DockPanel.Dock="Bottom"
+                             VerticalAlignment="Bottom"
+                             Command="{Binding VersionUpdateCommand}"
+                             Visibility="{Binding Path=HigherVersionCheck, Converter={StaticResource BoolToVis}}">
+                            <RadioButton.Background>
+                                <LinearGradientBrush>
+                                    <GradientStop Offset="0.0" Color="{StaticResource ResourceKey=DeepOnyxnColor}" />
+                                    <GradientStop Offset="1.5" Color="{StaticResource ResourceKey=JuteBrownColorDarker}" />
+                                    <GradientStop Offset="3.0" Color="{StaticResource ResourceKey=JuteBrownLighterColor}" />
+                                    <GradientStop Offset="4.5" Color="{StaticResource ResourceKey=JuteBrownColor}" />
+                                    <GradientStop Offset="0.8" Color="{StaticResource ResourceKey=VikingRedColor}" />
+                                </LinearGradientBrush>
+                            </RadioButton.Background>
+                        </RadioButton>
+                        
+                    </DockPanel>
+                </Grid>
+                <Border Grid.Column="1"
+                        CornerRadius="0,0,17,0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0.0" Color="{StaticResource ResourceKey=JuteBrownColorDarker}" />
+                            <GradientStop Offset="0.5" Color="{StaticResource ResourceKey=JuteBrownLighterColor}" />
+                            <GradientStop Offset="1.0" Color="{StaticResource ResourceKey=JuteBrownColor}" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <ContentControl x:Name="MainContentControl"
+                            Content="{Binding SelectedViewModel}"
+                            Margin="0,0,0,0" />
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
